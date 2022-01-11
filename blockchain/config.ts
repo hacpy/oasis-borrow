@@ -31,6 +31,7 @@ import {
 import { default as goerliAddresses } from './addresses/goerli.json'
 import { default as kovanAddresses } from './addresses/kovan.json'
 import { default as mainnetAddresses } from './addresses/mainnet.json'
+import { default as sherpaxAddressed } from './addresses/sherpax.json'
 
 export function contractDesc(abi: any, address: string): ContractDesc {
   return { abi, address }
@@ -201,6 +202,59 @@ const goerli: NetworkConfig = {
   cacheApi: 'https://oazo-bcache-goerli-staging.new.oasis.app/api/v1',
 }
 
+const sherpax: NetworkConfig = {
+  id: '1506',
+  name: 'sherpax',
+  label: 'sherpax',
+  infuraUrl: `http://localhost:8545`,
+  infuraUrlWS: `ws://localhost:9944`,
+  safeConfirmations: 6,
+  otc: contractDesc(otc, '0x0000000000000000000000000000000000000000'),
+  collaterals: getCollaterals(sherpaxAddressed),
+  tokens: {
+    ...getCollateralTokens(sherpaxAddressed),
+    WETH: contractDesc(eth, sherpaxAddressed.ETH),
+    DAI: contractDesc(erc20, sherpaxAddressed.MCD_DAI),
+  },
+  joins: {
+    ...getCollateralJoinContracts(sherpaxAddressed),
+  },
+  getCdps: contractDesc(getCdps, sherpaxAddressed.GET_CDPS),
+  mcdOsms: getOsms(sherpaxAddressed),
+  mcdPot: contractDesc(mcdPot, sherpaxAddressed.MCD_POT),
+  mcdJug: contractDesc(mcdJug, sherpaxAddressed.MCD_JUG),
+  mcdEnd: contractDesc(mcdEnd, sherpaxAddressed.MCD_END),
+  mcdSpot: contractDesc(mcdSpot, sherpaxAddressed.MCD_SPOT),
+  mcdDog: contractDesc(mcdDog, sherpaxAddressed.MCD_DOG),
+  dssCdpManager: contractDesc(dssCdpManager, sherpaxAddressed.CDP_MANAGER),
+  otcSupportMethods: contractDesc(otcSupport, '0x0000000000000000000000000000000000000000'),
+  vat: contractDesc(vat, sherpaxAddressed.MCD_VAT),
+  mcdJoinDai: contractDesc(mcdJoinDai, sherpaxAddressed.MCD_JOIN_DAI),
+  dsProxyRegistry: contractDesc(dsProxyRegistry, sherpaxAddressed.PROXY_REGISTRY),
+  dsProxyFactory: contractDesc(dsProxyFactory, sherpaxAddressed.PROXY_FACTORY),
+  dssProxyActions: contractDesc(dssProxyActions, sherpaxAddressed.PROXY_ACTIONS),
+  // Currently this is not supported on Goerli - no deployed contract
+  dssMultiplyProxyActions: contractDesc(
+    dssMultiplyProxyActions,
+    getConfig()?.publicRuntimeConfig?.multiplyProxyActions || '',
+  ),
+  // Currently this is not supported on Goerli - no deployed contract
+  exchange: contractDesc(exchange, getConfig()?.publicRuntimeConfig?.exchangeAddress || ''),
+  // Currently this is not supported on Goerli - no deployed contract
+  fmm: '0x1EB4CF3A948E7D72A198fe073cCb8C7a948cD853',
+  etherscan: {
+    url: '',
+    apiUrl: '',
+    apiKey: etherscanAPIKey || '',
+  },
+  taxProxyRegistries: [sherpaxAddressed.PROXY_REGISTRY],
+  dssProxyActionsDsr: contractDesc(dssProxyActionsDsr, sherpaxAddressed.PROXY_ACTIONS_DSR),
+  magicLink: {
+    apiKey: '',
+  },
+  cacheApi: 'https://oazo-bcache-goerli-staging.new.oasis.app/api/v1',
+}
+
 const hardhat: NetworkConfig = {
   ...protoMain,
   id: '2137',
@@ -221,8 +275,8 @@ const hardhat: NetworkConfig = {
   ),
 }
 
-export const networksById = keyBy([main, kovan, hardhat, goerli], 'id')
-export const networksByName = keyBy([main, kovan, hardhat, goerli], 'name')
+export const networksById = keyBy([main, kovan, hardhat, goerli, sherpax], 'id')
+export const networksByName = keyBy([main, kovan, hardhat, goerli, sherpax], 'name')
 
 export const dappName = 'Oasis'
 export const pollingInterval = 12000

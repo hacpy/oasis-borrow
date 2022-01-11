@@ -1,0 +1,1 @@
+{"version":3,"file":"network.d.ts","sourceRoot":"","sources":["../../src/network.ts"],"names":[],"mappings":"AAGA,eAAO,MAAM,eAAe;;CAKE,CAAC;AAE/B,MAAM,WAAW,YAAY;IAC3B,GAAG,EAAE,GAAG,CAAC;IACT,OAAO,EAAE,MAAM,CAAC;CACjB;AAGD,eAAO,MAAM,QAAQ,EAAE,GAQtB,CAAC;AAEF,wBAAgB,cAAc,IAAI,MAAM,CAYvC;AAED,wBAAgB,YAAY,IAAI,MAAM,CAIrC"}

@@ -1,0 +1,23 @@
+{
+  "name": "@oasisdex/utils",
+  "version": "0.0.8",
+  "description": "Utils",
+  "homepage": "https://github.com/OasisDEX/common#readme",
+  "main": "lib/src/index.js",
+  "typings": "lib/src/index.d.ts",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/OasisDEX/common.git"
+  },
+  "scripts": {
+    "build": "tsc -b",
+    "watch": "tsc -b -w"
+  },
+  "bugs": {
+    "url": "https://github.com/OasisDEX/common/issues"
+  },
+  "dependencies": {
+    "bignumber.js": "^9.0.1"
+  },
+  "gitHead": "f6d33ecda570e3434b86f98c14cc406eee19938b"
+}

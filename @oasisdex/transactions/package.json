@@ -1,0 +1,30 @@
+{
+  "name": "@oasisdex/transactions",
+  "version": "0.0.23",
+  "description": "Utilities for sending and monitoring transactions",
+  "homepage": "https://github.com/OasisDEX/common#readme",
+  "main": "lib/src/index.js",
+  "typings": "lib/src/index.d.ts",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/OasisDEX/common.git"
+  },
+  "scripts": {
+    "build": "tsc -b",
+    "watch": "tsc -b -w"
+  },
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/OasisDEX/common/issues"
+  },
+  "dependencies": {
+    "@types/ramda": "^0.25.38",
+    "bignumber.js": "^9.0.1",
+    "lodash": "^4.17.20",
+    "ramda": "^0.25.0",
+    "rxjs": "^6.2.0",
+    "rxjs-take-while-inclusive": "^2.1.0",
+    "web3": "^1.3.3"
+  },
+  "gitHead": "d8b1ba13e64be9f03e195bbc242eeb37779912de"
+}

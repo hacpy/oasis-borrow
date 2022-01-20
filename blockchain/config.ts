@@ -252,7 +252,7 @@ const sherpax: NetworkConfig = {
   magicLink: {
     apiKey: '',
   },
-  cacheApi: 'https://oazo-bcache-goerli-staging.new.oasis.app/api/v1',
+  cacheApi: 'https://oazo-bcache.new.oasis.app/api/v1',
 }
 
 const hardhat: NetworkConfig = {
